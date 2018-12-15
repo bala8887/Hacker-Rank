@@ -1,5 +1,6 @@
 #!/bin/python3
 
+
 import os
 import sys
 
@@ -10,6 +11,8 @@ def simpleArraySum(ar):
     #
     # Write your code here.
     #
+    #print (type(ar));
+    return sum(ar);
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
