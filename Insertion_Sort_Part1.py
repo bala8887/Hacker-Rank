@@ -1,64 +1,46 @@
-#include <bits/stdc++.h>
+#!/bin/python3
 
-using namespace std;
+import math
+import os
+import random
+import re
+import sys
 
-vector<string> split_string(string);
+# Complete the insertionSort1 function below.
+def insertionSort1(n, arr):
+    #arr=[2,4,6,8,3];
+    n=arr[len(arr)-1];
+    if arr[len(arr)-2]<=arr[len(arr)-1]:
+        lst=[]
+        for i in arr:
+            lst.append(i);
+            #lst.append(n);
+            print (lst);
+    else:
+        #arr.append(arr[len(arr)-1]);
+        indicator=0;
+        arr[len(arr)-1]=arr[len(arr)-2];
+        for i in range(len(arr)):
+            lst=[]; k=len(arr)-i-1;
+            #print (k);
+            for j in range(len(arr)):
+                if k==j:
+                    #print (k);
+                    if arr[k]>n and arr[k-1]>n and k>0: #arr[len(arr)-i-1]==arr[i]:
+                        lst.append(arr[k-1]);
+                    else:
+                        lst.append(n);
+                        indicator=1;
+                else:
+                    lst.append(arr[j]);
+            print (' '.join(str(x) for x in lst));
+            arr=lst;
+            if indicator==1:
+                break;
 
-// Complete the insertionSort1 function below.
-void insertionSort1(int n, vector<int> arr) {
+if __name__ == '__main__':
+    n = int(input())
 
+    arr = list(map(int, input().rstrip().split()))
 
-}
-
-int main()
-{
-    int n;
-    cin >> n;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-    string arr_temp_temp;
-    getline(cin, arr_temp_temp);
-
-    vector<string> arr_temp = split_string(arr_temp_temp);
-
-    vector<int> arr(n);
-
-    for (int i = 0; i < n; i++) {
-        int arr_item = stoi(arr_temp[i]);
-
-        arr[i] = arr_item;
-    }
-
-    insertionSort1(n, arr);
-
-    return 0;
-}
-
-vector<string> split_string(string input_string) {
-    string::iterator new_end = unique(input_string.begin(), input_string.end(), [] (const char &x, const char &y) {
-        return x == y and x == ' ';
-    });
-
-    input_string.erase(new_end, input_string.end());
-
-    while (input_string[input_string.length() - 1] == ' ') {
-        input_string.pop_back();
-    }
-
-    vector<string> splits;
-    char delimiter = ' ';
-
-    size_t i = 0;
-    size_t pos = input_string.find(delimiter);
-
-    while (pos != string::npos) {
-        splits.push_back(input_string.substr(i, pos - i));
-
-        i = pos + 1;
-        pos = input_string.find(delimiter, i);
-    }
-
-    splits.push_back(input_string.substr(i, min(pos, input_string.length()) - i + 1));
-
-    return splits;
-}
+    insertionSort1(n, arr)
